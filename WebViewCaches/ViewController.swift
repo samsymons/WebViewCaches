@@ -26,11 +26,6 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Use this location to check the cached files on disk:
-        if let libraryLocation = FileManager.default.urls(for: .libraryDirectory, in: .allDomainsMask).first {
-            print("App Data Directory: \(libraryLocation)")
-        }
-
         self.urlTextField.text = defaultURL.absoluteString
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
 
@@ -95,10 +90,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
 
     private func removeWebViewData(completion: @escaping () -> Void) {
-        HSTSCache.delete()
-
         let types = WKWebsiteDataStore.allWebsiteDataTypes()
-        WKWebsiteDataStore.default().removeData(ofTypes: types, modifiedSince: Date.distantPast, completionHandler: completion)
+        WKWebsiteDataStore.default().removeData(ofTypes: types, modifiedSince: Date.distantPast) {
+            HSTSCache.delete()
+            completion()
+        }
     }
 
     // MARK: - WKNavigationDelegate
