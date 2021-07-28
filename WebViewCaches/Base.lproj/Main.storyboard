@@ -38,7 +38,21 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3f-cP-3uO">
                                 <rect key="frame" x="20" y="108" width="374" height="704"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WKWebView instance has been removed, tap Create New Web View to create a new one" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbT-X4-zwn">
+                                        <rect key="frame" x="20" y="0.0" width="334" height="704"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WbT-X4-zwn" secondAttribute="trailing" constant="20" id="0tu-sg-aLK"/>
+                                    <constraint firstAttribute="bottom" secondItem="WbT-X4-zwn" secondAttribute="bottom" id="3X6-Jp-jfc"/>
+                                    <constraint firstItem="WbT-X4-zwn" firstAttribute="leading" secondItem="p3f-cP-3uO" secondAttribute="leading" constant="20" id="5Hp-ci-odd"/>
+                                    <constraint firstItem="WbT-X4-zwn" firstAttribute="top" secondItem="p3f-cP-3uO" secondAttribute="top" id="Wf1-9t-5bL"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -69,6 +83,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -21,18 +21,19 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
 
     private let defaultURL = URL(string: "https://youtube.com")!
-
     private var webView: WKWebView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Use this location to check the cached files on disk:
         if let libraryLocation = FileManager.default.urls(for: .libraryDirectory, in: .allDomainsMask).first {
             print("App Data Directory: \(libraryLocation)")
         }
 
         self.urlTextField.text = defaultURL.absoluteString
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+
         createAndAddWebView()
         loadCurrentURL()
     }
@@ -106,9 +107,6 @@ class ViewController: UIViewController, WKNavigationDelegate {
         decisionHandler(.allow)
     }
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        decisionHandler(.allow)
-    }
 }
 
 extension WKWebViewConfiguration {
